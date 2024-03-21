@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>CSS实现三栏布局</title>
+    <style type="text/css">
+      /* 方法4 flex 直接给中间设置flex 1 左右固定宽度 */
+      /* 优点是特别简单 缺点是依赖flex的兼容性 */
+      .container {
+        display: flex;
+      }
+      .left {
+        width: 200px;
+        height: 200px;
+        background: red;
+        order: 1;
+      }
+      .middle {
+        height: 200px;
+        background: yellow;
+        flex: 1;
+        /* order: 2; */
+      }
+      .right {
+        width: 200px;
+        height: 200px;
+        background: blue;
+        /* order: 3; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="middle">中间栏</div>
+      <div class="left">左栏</div>
+      <div class="right">右栏</div>
+    </div>
+  </body>
+</html>

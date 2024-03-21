@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>下拉刷新示例</title>
+    <style>
+      /* 简单的样式定义，确保内容足够长，可以滚动 */
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+      .content {
+        min-height: 150vh; /* 超过视口高度，确保可以滚动 */
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <p>下拉以刷新内容</p>
+      <!-- 内容区域 -->
+    </div>
+
+    <script>
+      // 获取页面的内容区域
+      var content = document.querySelector(".content");
+
+      // 页面初始化时的最顶部位置
+      var startPos = 0;
+
+      // 监听触摸开始事件
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          startPos = e.touches[0].pageY;
+        },
+        false
+      );
+
+      // 监听触摸移动事件
+      document.addEventListener(
+        "touchmove",
+        console.log()
+        function (e) {
+          var currentPos = e.touches[0].pageY;
+
+          // 如果是向下滑动，并且页面处于最顶部
+          if (currentPos > startPos && window.scrollY === 0) {
+            e.preventDefault(); // 阻止默认滚动行为
+
+            // 可以在这里添加动画或者提示用户正在刷新
+          }
+        },
+        false
+      );
+
+      // 监听触摸结束事件
+      document.addEventListener(
+        "touchend",
+        function (e) {
+          if (window.scrollY === 0) {
+            // 实际项目中这里可以替换成异步请求数据的操作
+            console.log("刷新数据...");
+            location.reload(); // 为了示例简单，这里使用页面刷新模拟数据刷新
+          }
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
